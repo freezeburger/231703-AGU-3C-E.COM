@@ -15,6 +15,18 @@ For an application:
 ng g app APP_NAME
 ```
 
+## How to create documentation ?
+
+Use `@compodoc/compodoc`
+
+https://compodoc.app/guides/installation.html
+
+```
+ng add @compodoc/compodoc --project=PROJECT_NAME
+```
+
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

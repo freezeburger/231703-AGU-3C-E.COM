@@ -1,0 +1,1 @@
+var ROUTES_INDEX = {"name":"<root>","kind":"module","className":"AppModule","children":[{"name":"routes","filename":"projects/dashboard/src/app/app-routing.module.ts","module":"AppRoutingModule","children":[],"kind":"module"},{"name":"routes","filename":"projects/dashboard/src/app/view/view-routing.module.ts","module":"ViewRoutingModule","children":[],"kind":"module"}]}
