@@ -28,74 +28,161 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content module">
+               <div class="content component">
                    <div class="content-data">
 
 
 
+
 <ol class="breadcrumb">
-    <li>Modules</li>
-    <li >ViewRoutingModule</li>
+  <li>Components</li>
+  <li
+  >
+  ViewHomeComponent</li>
 </ol>
 
-
 <ul class="nav nav-tabs" role="tablist">
-    <li  class="active" >
-        <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
-    </li>
-    <li >
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
-    </li>
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
-
-        <p class="comment">
-            <h3>File</h3>
-        </p>
-        <p class="comment">
-            <code>projects/dashboard/src/app/view/view-routing.module.ts</code>
-        </p>
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/dashboard/src/app/view/view-home/view-home.component.ts</code>
+</p>
 
 
 
 
 
-        <div class="container-fluid module">
-            <div class="row">
-            </div>
-        </div>
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
 
 
-    </div>
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-view-home</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./view-home.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./view-home.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
-import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
-import { ViewDashboardComponent } from &#x27;./view-dashboard/view-dashboard.component&#x27;;
-import { ViewHomeComponent } from &#x27;./view-home/view-home.component&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 
-const routes: Routes &#x3D; [
-  {
-    path:&#x27;&#x27;,
-    component:ViewHomeComponent
-  },
-  {
-    path:&#x27;app&#x27;,
-    component:ViewDashboardComponent
-  },
-];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+@Component({
+  selector: &#x27;app-view-home&#x27;,
+  templateUrl: &#x27;./view-home.component.html&#x27;,
+  styleUrls: [&#x27;./view-home.component.scss&#x27;]
 })
-export class ViewRoutingModule { }
+export class ViewHomeComponent {
+
+}
 </code></pre>
     </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;p&gt;view-home works!&lt;/p&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./view-home.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
 </div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><p>view-home works!</p></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ViewDashboardComponent', 'selector': 'app-view-dashboard'},{'name': 'ViewHomeComponent', 'selector': 'app-view-home'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ViewHomeComponent'};
+</script>
+<script src="../js/tree.js"></script>
 
 
 
@@ -138,8 +225,8 @@ export class ViewRoutingModule { }
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'ViewRoutingModule.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ViewHomeComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
