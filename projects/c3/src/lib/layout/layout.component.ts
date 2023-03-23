@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ViewChild, EventEmitter, Output, HostListener, Component } from '@angular/core';
 
 @Component({
   selector: 'c3-layout',
@@ -7,6 +7,15 @@ import { Component } from '@angular/core';
 })
 export class LayoutComponent {
 
-  navabarVisible = false;
+  @ViewChild('drawer') drawer: any = null;
+  @Output() menuToggle = new EventEmitter()
+
+  @HostListener('window:keydown.alt.m')
+  toggleMenu() {
+
+    this.drawer && this.drawer.toggle();
+    this.menuToggle.emit({ opened: this.drawer.opened });
+
+  }
 
 }
