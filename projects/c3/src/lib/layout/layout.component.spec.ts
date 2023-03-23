@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { C3Component } from './c3.component';
+import { LayoutComponent } from './layout.component';
 
-describe('C3Component', () => {
-  let component: C3Component;
-  let fixture: ComponentFixture<C3Component>;
+describe('LayoutComponent', () => {
+  let component: LayoutComponent;
+  let fixture: ComponentFixture<LayoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ C3Component ]
+      declarations: [ LayoutComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(C3Component);
+    fixture = TestBed.createComponent(LayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

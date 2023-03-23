@@ -6,6 +6,9 @@
     "paths": {
       "c3": [
         "dist/c3"
+      ],
+      "@c3": [
+        "projects/c3/src/public-api.ts"
       ]
     },
     "outDir": "./dist/out-tsc",

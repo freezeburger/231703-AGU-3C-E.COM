@@ -1,0 +1,25 @@
+:host{
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+button{
+    background: none;
+    color:white;
+    border:none;
+}
+
+main{
+    height:90vh;  
+}
+
+mat-drawer-container, mat-drawer{
+    height:inherit;  
+    padding: 15px;
+}
+
+mat-toolbar{
+    height:10vh;
+}

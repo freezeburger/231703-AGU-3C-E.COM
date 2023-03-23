@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
-import { C3Component } from './c3.component';
-
+import { SharedModule } from './shared/shared.module';
+import { LayoutComponent } from './layout/layout.component';
 
 
 @NgModule({
   declarations: [
-    C3Component
+    LayoutComponent
   ],
   imports: [
+    SharedModule
   ],
   exports: [
-    C3Component
+    LayoutComponent
   ]
 })
 export class C3Module { }

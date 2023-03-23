@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,12 @@ export class AppComponent {
   constructor(){
     console.log(1,this)
   }
+
+  @HostListener('window:click', ['$event'] )
+  doClick( event:any ){
+    console.log('You Clicked', event )
+  }
+
   ngOnInit(){
     console.log(2,this)
   }
@@ -18,4 +24,5 @@ export class AppComponent {
   ngOnDestroy(){
     console.log(4,this)
   }
+  
 }
