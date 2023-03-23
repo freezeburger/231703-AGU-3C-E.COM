@@ -1,18 +1,37 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button  aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
-        <mat-icon>menu</mat-icon>
-    </button>
-    <span>My Application</span>
-</mat-toolbar>
+<ng-container [ngTemplateOutlet]="header"></ng-container>
 
 <main>
-    <mat-drawer-container class="example-container" autosize>
-       
-        <mat-drawer #drawer mode="side">
-          <p>Auto-resizing sidenav</p>
-        </mat-drawer>
-      
+  <mat-drawer-container class="example-container" autosize>
+    
+    <ng-container [ngTemplateOutlet]="mainContent"></ng-container>
 
-      
-      </mat-drawer-container>
+    <mat-drawer #drawer mode="side">
+      <ng-container [ngTemplateOutlet]="menuContent"></ng-container>
+    </mat-drawer>
+   
+  </mat-drawer-container>
 </main>
+
+<!-- Header Presentation -->
+<ng-template #header>
+  <mat-toolbar color="primary">
+    <button mat-icon-button aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span> {{ pageTitle | uppercase }} </span>
+  </mat-toolbar>
+</ng-template>
+
+<!-- Main Content Presentation -->
+<ng-template #mainContent>
+  <div class="main-container">
+    <ng-content></ng-content>
+  </div>
+</ng-template>
+
+<!-- Menu Content Presentation -->
+<ng-template #menuContent>
+  <h1>Menu</h1>
+  <hr>
+  <ng-content select=".menu"></ng-content>
+</ng-template>

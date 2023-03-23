@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class ViewHomeComponent {
 
+  onMenuToggle(menuState:Object){
+    console.log(menuState)
+  }
+
 }

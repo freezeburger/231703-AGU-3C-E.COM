@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { ViewChild, EventEmitter, Output, HostListener, Component } from '@angular/core';
 
 @Component({
@@ -7,8 +8,10 @@ import { ViewChild, EventEmitter, Output, HostListener, Component } from '@angul
 })
 export class LayoutComponent {
 
+  @Input() pageTitle = '';
+
   @ViewChild('drawer') drawer: any = null;
-  @Output() menuToggle = new EventEmitter()
+  @Output() menuToggle = new EventEmitter();
 
   @HostListener('window:keydown.alt.m')
   toggleMenu() {
