@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, of } from 'rxjs';
 import { AppAuthCredentials } from '../interfaces/app-auth-credentials';
-import { AppAuthResponse } from '../interfaces/app-auth-response';
+import { AppAuthErrorResponse, AppAuthResponse, AppAuthValidResponse } from '../interfaces/app-auth-response';
 
 @Injectable({
   providedIn: 'root'
@@ -9,34 +10,47 @@ import { AppAuthResponse } from '../interfaces/app-auth-response';
 export class AuthService {
 
   private readonly AUTH_API = 'http://localhost:5050/auth';
-  private AuthToken:string | null = null;
+  private AuthToken: string | null = null;
 
   constructor(
     private http: HttpClient
   ) { }
 
-  public isAuth(){
+  public isAuth() {
     return this.AuthToken !== null;
   }
 
-  public getAuthToken(){
+  public getAuthToken() {
     return this.AuthToken;
   }
 
-  public login( credentials:AppAuthCredentials ){
+  public login(credentials: AppAuthCredentials) {
     // Vérifier le format des credentials !!
     const endpoint = this.AUTH_API + '/login';
-    this.http.post<AppAuthResponse>( endpoint, credentials ).subscribe( this.processServerResponse );
+    this.http.post<AppAuthResponse>(endpoint, credentials)
+      .pipe(
+        catchError(this.transformErrorResponse)
+      )
+      .subscribe(this.processServerResponse);
   }
 
-  public register(credentials:AppAuthCredentials ){
+  public register(credentials: AppAuthCredentials) {
     // Vérifier le format des credentials !!
     const endpoint = this.AUTH_API + '/register';
-    this.http.post<AppAuthResponse>( endpoint, credentials ).subscribe( this.processServerResponse );
+
+    this.http.post<AppAuthResponse>(endpoint, credentials)
+      .pipe(
+        catchError(this.transformErrorResponse)
+      )
+      .subscribe(this.processServerResponse);
   }
 
-  private processServerResponse = ( response: AppAuthResponse) => {
-    console.table(response);
+  private transformErrorResponse = (res: HttpErrorResponse) => of(res.error as AppAuthErrorResponse)
+
+  private processServerResponse = (response: AppAuthResponse) => {
+
+    if((response as AppAuthValidResponse).access_token) this.AuthToken = (response as AppAuthValidResponse).access_token ;
+    
   }
 
 }
