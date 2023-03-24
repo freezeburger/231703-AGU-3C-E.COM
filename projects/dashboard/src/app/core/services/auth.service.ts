@@ -27,30 +27,21 @@ export class AuthService {
   public login(credentials: AppAuthCredentials) {
     // Vérifier le format des credentials !!
     const endpoint = this.AUTH_API + '/login';
-    this.http.post<AppAuthResponse>(endpoint, credentials)
-      .pipe(
-        catchError(this.transformErrorResponse)
-      )
-      .subscribe(this.processServerResponse);
+    this.http.post<AppAuthResponse>(endpoint, credentials).subscribe(this.processServerResponse);
   }
 
   public register(credentials: AppAuthCredentials) {
     // Vérifier le format des credentials !!
     const endpoint = this.AUTH_API + '/register';
 
-    this.http.post<AppAuthResponse>(endpoint, credentials)
-      .pipe(
-        catchError(this.transformErrorResponse)
-      )
-      .subscribe(this.processServerResponse);
+    this.http.post<AppAuthResponse>(endpoint, credentials).subscribe(this.processServerResponse);
   }
 
-  private transformErrorResponse = (res: HttpErrorResponse) => of(res.error as AppAuthErrorResponse)
 
   private processServerResponse = (response: AppAuthResponse) => {
 
-    if((response as AppAuthValidResponse).access_token) this.AuthToken = (response as AppAuthValidResponse).access_token ;
-    
+    if ((response as AppAuthValidResponse).access_token) this.AuthToken = (response as AppAuthValidResponse).access_token;
+
   }
 
 }

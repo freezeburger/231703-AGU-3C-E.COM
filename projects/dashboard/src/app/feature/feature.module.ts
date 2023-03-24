@@ -1,12 +1,27 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { FeatLoginComponent } from './feat-login/feat-login.component';
+import { FeatRegisterComponent } from './feat-register/feat-register.component';
+import { FeatMessageListComponent } from './feat-message-list/feat-message-list.component';
+import { FeatMessageWriteComponent } from './feat-message-write/feat-message-write.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    FeatLoginComponent,
+    FeatRegisterComponent,
+    FeatMessageListComponent,
+    FeatMessageWriteComponent
+  ],
   imports: [
-    CommonModule
+    SharedModule
+  ],
+  exports: [
+    FeatLoginComponent,
+    FeatRegisterComponent,
+    FeatMessageListComponent,
+    FeatMessageWriteComponent
   ]
 })
 export class FeatureModule { }

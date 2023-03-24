@@ -1,7 +1,9 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
+import { AppAuthErrorResponse } from '../interfaces/app-auth-response';
 import { AuthService } from '../services/auth.service';
+import { of , throwError} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,22 +11,23 @@ import { AuthService } from '../services/auth.service';
 export class AuthInterceptorService implements HttpInterceptor {
 
   constructor(
-    private auth:AuthService
+    private auth: AuthService
   ) { }
 
   intercept(
-    req: HttpRequest<any>, 
+    req: HttpRequest<any>,
     next: HttpHandler
-    )
-    : Observable<HttpEvent<any>> 
-  {
-    if(!req.url.includes('/auth')) return next.handle(req);
-    
+  )
+    : Observable<HttpEvent<any>> {
+    if (req.url.includes('/auth')) return next.handle(req).pipe( catchError(this.transformErrorResponse) )
+
     const authentificatedRequest = req.clone({
-      headers: req.headers.set('Authorization', 'Bearer ' + this.auth.getAuthToken() )
+      headers: req.headers.set('Authorization', 'Bearer ' + this.auth.getAuthToken())
     })
-    
-    return next.handle( authentificatedRequest );
+
+    return next.handle(authentificatedRequest).pipe( catchError(this.transformErrorResponse) );
   }
+
+  private transformErrorResponse = (res: HttpErrorResponse) => throwError(res.error as AppAuthErrorResponse);
 
 }

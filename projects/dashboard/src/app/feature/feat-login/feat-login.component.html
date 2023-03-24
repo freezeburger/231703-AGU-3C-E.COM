@@ -1,0 +1,14 @@
+<form #loginForm="ngForm">
+
+    <h1>Identification</h1>
+    <hr>
+
+    <input type="text" placeholder="Email" name="email" [(ngModel)]="credentials.email" minlength="3" #email="ngModel">
+    <p *ngIf="email.dirty && email.invalid">Merci de préciser un email correct</p>
+
+    <input type="text" name="password" [(ngModel)]="credentials.password">
+    <hr>
+    
+    <button type="button" (click)="login()" [disabled]="loginForm.invalid">Login</button>
+
+</form>
