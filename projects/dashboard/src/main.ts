@@ -3,13 +3,15 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 
+import './theory/module-observable'
+
 // import './theory/module-a'
 // import './theory/module-b'
 
 // import('./theory/module-a').then( m => console.log(m))
 
-import { version } from './theory/module-a'
-console.warn( version );
+/* import { version } from './theory/module-a'
+console.warn( version ); */
 console.warn('Before Angular Bootstrap');
 
 platformBrowserDynamic(

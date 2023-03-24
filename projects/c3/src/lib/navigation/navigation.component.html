@@ -1,0 +1,7 @@
+<mat-toolbar>
+
+    <button mat-button color="primary" *ngFor="let link of navItems" class="mat-raised-button">
+        <a [routerLink]=" ['/', link ]">{{ link | uppercase }}</a>
+    </button>
+
+</mat-toolbar>

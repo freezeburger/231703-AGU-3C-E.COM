@@ -1,0 +1,16 @@
+
+<ng-container [ngTemplateOutlet]=" content "></ng-container>
+
+<ng-template #card>
+    <mat-card appearance="raised" class="accent">
+        <mat-card-header>
+            <mat-card-title>Attention:</mat-card-title>
+            <mat-card-subtitle>
+                <ng-content></ng-content>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions align="end">
+            <button mat-button>CLOSE</button>
+        </mat-card-actions>
+    </mat-card>
+</ng-template>

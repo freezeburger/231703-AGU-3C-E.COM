@@ -1,10 +1,10 @@
+import { HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
+  imports:[
+    HttpClientModule
   ],
   providers:[
     {
@@ -15,7 +15,9 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class CoreModule {
-  constructor(){
-    console.log(this)
+  constructor(
+    private auth:AuthService
+  ){
+    this.auth.login({email:'',password:''})
   }
  }

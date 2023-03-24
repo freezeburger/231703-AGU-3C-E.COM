@@ -7,22 +7,22 @@ import { Component, HostListener } from '@angular/core';
 })
 export class AppComponent {
   constructor(){
-    console.log(1,this)
+    // console.log(1,this)
   }
 
   @HostListener('window:click', ['$event'] )
   doClick( event:any ){
-    console.log('You Clicked', event )
+    // console.log('You Clicked', event )
   }
 
   ngOnInit(){
-    console.log(2,this)
+    // console.log(2,this)
   }
   ngDoCheck(){
-    console.log(3,this)
+    // console.log(3,this)
   }
   ngOnDestroy(){
-    console.log(4,this)
+    // console.log(4,this)
   }
   
 }

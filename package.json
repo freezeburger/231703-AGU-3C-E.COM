@@ -9,6 +9,8 @@
     "dashboard:watch": "ng build --watch --configuration development --project=dashboard",
     "dashboard:test": "ng test --project=dashboard",
     "c3:build": "ng build --project=c3",
+    "prec3:pack":"npm run c3:build",
+    "c3:pack":"npm pack ./dist/c3",
     "c3:test": "ng test --project=c3"
   },
   "private": true,
