@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppAuthCredentials } from '../../core/interfaces/app-auth-credentials';
 
 @Component({
@@ -9,6 +10,8 @@ import { AppAuthCredentials } from '../../core/interfaces/app-auth-credentials';
 export class FeatLoginComponent {
 
 
+  /* 
+  // Utilisé avec les TDF (Template Driven Forms : ngForm, ngModel) 
   public credentials:AppAuthCredentials = {
     email:'E',
     password:'P'
@@ -16,6 +19,16 @@ export class FeatLoginComponent {
 
   login(){
     console.log(this.credentials)
+  } 
+  */
+
+  rfCredentials = new FormGroup({
+    email: new FormControl('E', [ Validators.minLength(3) ]),
+    password: new FormControl('P')
+  })
+
+  rfLogin() {
+    console.log(this.rfCredentials.value)
   }
 
 }

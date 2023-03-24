@@ -1,4 +1,4 @@
-<form #loginForm="ngForm">
+<!-- <form #loginForm="ngForm">
 
     <h1>Identification</h1>
     <hr>
@@ -8,7 +8,21 @@
 
     <input type="text" name="password" [(ngModel)]="credentials.password">
     <hr>
-    
+
     <button type="button" (click)="login()" [disabled]="loginForm.invalid">Login</button>
+
+</form> -->
+
+<form [formGroup]="rfCredentials">
+
+    <h1>Identification</h1>
+    <hr>
+
+    <input type="text" placeholder="Email" name="email" formControlName="email">
+
+    <input type="text" name="password"  formControlName="password">
+    <hr>
+    
+    <button type="button" (click)="rfLogin()" [disabled]="rfCredentials.invalid">Login</button>
 
 </form>
