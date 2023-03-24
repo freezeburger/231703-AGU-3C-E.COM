@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component , inject} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EActionTypes } from '../../core/enums/e-action-types';
 import { AppAuthCredentials } from '../../core/interfaces/app-auth-credentials';
+import { DataStoreService } from '../../core/store/data-store.service';
 
 @Component({
   selector: 'app-feat-login',
@@ -22,13 +24,17 @@ export class FeatLoginComponent {
   } 
   */
 
+  dataStore = inject(DataStoreService);
+
+
   rfCredentials = new FormGroup({
     email: new FormControl('E', [ Validators.minLength(3) ]),
     password: new FormControl('P')
   })
 
   rfLogin() {
-    console.log(this.rfCredentials.value)
+    // console.log(this.rfCredentials.value)
+    this.dataStore.dispacth({type:EActionTypes.USER_LOGIN_REQUEST, payload: this.rfCredentials.value })
   }
 
 }
