@@ -34,7 +34,8 @@ export class FeatLoginComponent {
 
   rfLogin() {
     // console.log(this.rfCredentials.value)
-    this.dataStore.dispacth({type:EActionTypes.USER_LOGIN_REQUEST, payload: this.rfCredentials.value })
+    this.dataStore.dispatch({type:EActionTypes.USER_LOGIN_REQUEST, payload: ( this.rfCredentials.value as AppAuthCredentials) })
+    
   }
 
 }

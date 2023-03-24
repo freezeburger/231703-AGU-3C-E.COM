@@ -1,9 +1,13 @@
 <c3-layout (menuToggle)="onMenuToggle($event)" pageTitle="Home">
 
-    <pre>{{ dataStore.data$ | async | json }}</pre>
+    <!-- <pre>{{ dataStore.data$ | async | json }}</pre> -->
 
-    <c3-alert>Vous devez vous identifier.</c3-alert>
-
+    <ng-container *ngIf=" (dataStore.data$ | async)?.notifications as notifications">
+        <c3-alert *ngIf=" notifications.length">
+            {{ notifications[0].text}}
+        </c3-alert>
+    </ng-container>
+ 
     <ng-container class="menu">MENU CONTENT</ng-container>
 
     <ng-container>
